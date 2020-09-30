@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Upload File_CSV</title>
+  </head>
+  <body>
+    <p id = 'content'></p>
+    <p id= "gotopage"  hidden></p>
+    <div class="container">
+
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" name="myfile">
+        <p hidden id="name_file_hidden">12321</p>
+        <div class="col-md-6">
+            <button id = 'uploadfile' type="button" />Submit</button>
+        </div>
+
+    </div>
+
+    <div class="container">
+    <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Frequently</th>
+              <th scope="col">keywords</th>
+            </tr>
+          </thead>
+          <tbody class="keywords">
+{#                    {% for post in response_data %}#}
+                        <tr >
+                            <td class="id_post"></td>
+                            <td class ="content"><a href="showfeed.html"></a></td>
+                        </tr>
+
+{#                    {% endfor %}#}
+
+
+          </tbody>
+    </table>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+            $('#uploadfile').click(function(){
+                var name_file = document.getElementById("myfile").files[0].name;
+                document.getElementById("name_file_hidden").innerHTML = name_file
+
+                $.ajax({
+                        type:"POST",
+                        url: "upload_file_path",
+                        data:{
+                            'name_file': name_file,
+                            'csrfmiddlewaretoken': '{{ csrf_token }}',
+                        },
+
+                        success: function(data) {
+                            {#console.log(data);#}
+                            for(let i = 0; i < data.length; i++){
+                                var replace_space =data[i]['word'].replace(/ /g,"%20") ;
+                                {#$('#id_post').html(data[i]['word']);#}
+                                {#$('#content').html(data[i]['frequently']);#}
+                                $(".keywords").append(
+                                    "<tr class = 'hello'>"+
+                                    "<td id ="+ data[i]['frequently']+">"+data[i]['frequently']+"</td>"+
+                                    "<td>"+
+                                    "<a target='_blank' href="+ "newsfeed/"+replace_space + ">"
+                                    +data[i]['word']+
+                                    "</a>"+
+                                    "</td>"+
+                                    "</tr>"
+
+                                )
+                            }
+                        }
+                    })
+            });
+    </script>
+
+  </body>
+</html>
+
