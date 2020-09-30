@@ -1,0 +1,12 @@
+1. Trước tiên tải python 3.7+
+2. Tải Django framework để làm website
+3. Bỏ tất file xlsx gồm có các cột: STT, Content, ID người đăng vào folder data_csv. Lưu ý không xóa file stop_words.xlsx. 
+4. Tải các thư viên pandas để phục vụ chạy xử lý dữ liệu 
+5. Sau khi tải xong chạy file bằng câu lệnh command line: python3 manage.py runserver trong thư mục read_csv.
+6. Sau khi chạy file ở bước 5. 
+	Trình duyệt sẽ hiện thị 2 cột đó: 
+		+ frequently là tần số xuất hiện.
+		+ word là keywords xuất hiện được xử lý bằng NLP được 70%.
+7. Bấm vào link trong cột word: sẽ xem tất cả bài post liên quan đến keywords. Sau đó xuất ra file excel bằng cách bấm  gồm id_post_owner là id của user, content: nội dung bài feed, id_feed: id bài post.
+8. Vào folder data_output để xem kết quả xuất file.
+
