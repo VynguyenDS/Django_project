@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body>
+
+<center>
+	<form method="POST">
+		{% csrf_token %}
+		<label for="name">Username:</label>
+  		<input type="text" id="name" name="name"><br><br>
+  		<label for="password">Password:</label>
+  		<input type="password" id="password" name="password" maxlength="20"><br><br>
+  		<Button type="submit">Login</Button>
+	</form>
+	<a href="/create">Create Account now</a><br>
+
+    <a href="{% provider_login_url 'facebook' method='oauth2' %}">facebook</a><br>
+
+    <a href="{% provider_login_url 'google' %}"><button>Google</button></a><br>
+    <p>you are : {{ user }}</p>
+</center>
+</body>
+</html>

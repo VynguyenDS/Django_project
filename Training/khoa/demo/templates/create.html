@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Account</title>
+</head>
+<body>
+	<form method="POST">
+		{% csrf_token %}
+		<label for="name">Username:</label>
+  		<input type="text" id="name" name="name"><br><br>
+  		<label for="password1">Password:</label>
+  		<input type="password" id="password1" name="password1" maxlength="20"><br><br>
+  		<label for="password2">Password:</label>
+  		<input type="password" id="password2" name="password2" maxlength="20"><br><br>
+  		<Button type="submit">Create Account</Button>
+	</form>
+</body>
+</html>

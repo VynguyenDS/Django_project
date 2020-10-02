@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+{% load socialaccount %}
+{% providers_media_js %}
+<head>
+	<title>welcome</title>
+</head>
+<body>
+{% load socialaccount %}
+<h1>WELCOME</h1>
+<h2>user: {{user}}</h2>
+
+<form method="POST">
+	{% csrf_token %}
+	<input type="submit" name="logout" value="logout">
+</form>
+</body>
+</html>
