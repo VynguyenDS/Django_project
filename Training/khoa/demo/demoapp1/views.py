@@ -1,14 +1,14 @@
 from django.shortcuts import render,HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib import messages
-from demoapp1.models import Account
+from demoapp1.models import login_Account
 # Create your views here.
 def  index(request):
 	print(request.POST.get('name'))
 
 	if request.method == 'POST':
-		have_name = Account.objects.filter(username=request.POST.get('name')).exists()
-		have_password = Account.objects.filter(password=request.POST.get('password')).exists()
+		have_name = login_Account.objects.filter(username=request.POST.get('name')).exists()
+		have_password = login_Account.objects.filter(password=request.POST.get('password')).exists()
 		if have_name == False:
 			messages.info(request,"username not exist")
 			
@@ -37,7 +37,7 @@ def create(request):
 			print("here")
 			check= password_check(request.POST.get('password1'),request.POST.get('password2'))
 			if check == True:
-				new = Account()
+				new = login_Account()
 				new.username = request.POST.get('name')
 				new.password = request.POST.get('password1')
 				new.save()

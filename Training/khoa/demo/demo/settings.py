@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -87,8 +90,11 @@ WSGI_APPLICATION = 'demo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'account',
+        'USER': 'postgres',
+        'PASSWORD':'PoKe1234',
+        'HOST':'localhost',
     }
 }
 
