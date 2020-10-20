@@ -1,0 +1,14 @@
+Description: When customers click buton to login through API of facebook, gmail, google, printerst or may be customers registers.
+How to run:
+	+ Must to install django ==3.5
+	+ pip3 install allauth
+Copy: localhost:8000 and paste it on search of website.
+
+
+Before u login facebook forms, you create app developers on site : facebook developer.
+Becausue Facebook must have https and domain name.
+After that go: localhost:8000/admin. go to socialapp: add secrey keys and name, ClientID. and Google too. When you insert it completely. 
+Return back: localhost:8000 and login it. 
+This is a demo. Because we don't know a layout to do it and waiting designer to do frontend vs backend. 
+ 
+ 
